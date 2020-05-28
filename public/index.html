@@ -28,7 +28,7 @@
         
            <h2>Let's stay healthy</h2>
         
-           <a href="#Exercise" data-icon="star">Out calories</a> 
+           <a href="#Out" data-icon="star">Out calories</a> 
            <a href="#Inn" data-icon="star">Inn calories</a>
            <a href="#Sources" data-icon="star">Information</a>
            <a href="#Summary" data-icon="star">Summary</a>
@@ -153,23 +153,35 @@
             <div data-role="content" data-theme='a'>
 
                <form action="index.html">
+                    <h1> What additional exercise did you do today?</h1>
+           
+           
+           
+                           <label>Running:
+                                <input id="running" type="radio" name="gender" onchange="exerciseCal()">
+                           </label>
 
-                  <h2>Choose the type of exercise bellow: </h2>
+                           <label>Walking:
+                                <input id="walking" type="radio" name="gender" onchange="exerciseCal()" checked>
+                           </label>
+                           <label>Minutes:
+                                <input id="time" type="number" oninput="exerciseCal()" value="50">
+                        
+                           <label>
+                                You burnt  <span id="exerciseCals"></span> aditional  kcal 
+                           </label>
 
-                  <select name="Exercise">
-                     <option value="running">Running</option>
-                     <option value="walking">Walking</option>
-                     <option value="Eleptical machine training">Eleptical mashine exercise</option>
-                     <option value="Swimming">Swimming</option>
-                  </select>
-               </form>
-
-               <h2>Enter time:</h2>
-
-               <input type="text" id="answer">
+             
 
 
-               <button id="submit" >Submit</button>
+
+            <div class="grid-item">
+              
+                  <ul id="exList"></ul>
+                  ********************************<br />
+                  <label id="totalExercise"> </label>  
+               </div>
+
              
             </div>
     
@@ -209,36 +221,44 @@
 </div>
 
 
-<body>
-      <div data-role="page" id="Summary">
+ <div data-role="page" id="Summary">
       
               <div data-role="header" data-theme='a'> 
               
                  <h2>Let's stay healthy</h2>
               
-                 <a href="#Exercise" data-icon="star">Out calories</a> 
+                 <a href="#Out" data-icon="star">Out calories</a> 
                  <a href="#Inn" data-icon="star">Inn calories</a>
                  <a href="#Sources" data-icon="star">Information</a>
                  <a href="#Home" data-icon="star">Home page</a>
 
               </div>
-                 
-      
             
-      
               <div data-role="content" data-theme='a'>
-                      <h2>After you fill out your day progress, the summary of your surplus or deficit callories will be printed bellow/<h2>
-                        <div>   <label>
-                                 Based on your information, your : <span id="totalCals"></span> kcal 
-                            </label>
-                            </h2>
-                      </div>
+
+                      <h1>After you fill out your day progress,please click on "Try it" and
+                            the summary of your surplus or deficit callories will be printed bellow</h1>
+          
+
+                         
+                     <span id = "sumdaily"> </span>
+                      </br>
+                     <span id = "sumeaten"></span>
+                     </br>
+                     <span id = "sumadditional"></span>
+                    </br>
+
+
+
+                         <span id = "result"></span>
+                     <button type = "button" onclick="cal()">Try it</button>
               </div>
-      
+
+
               <div data-role="footer" data-theme='a'>
                  <h1>Copywrite Anastasia 2020</h1>
               </div>
       
       </div>
- </body>
+   </body>
  </html> 

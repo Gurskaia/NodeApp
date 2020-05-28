@@ -17,6 +17,7 @@
     });
 
     document.getElementById("clear").addEventListener("click", clear);
+
 });
 
 function clear() {
@@ -39,10 +40,19 @@ function updateDisplay(array) {
         document.getElementById("foodList").appendChild(node);
     }
 
-    document.getElementById("total").innerHTML = "You have consumed" + total + "calories";
-    return total;
+    document.getElementById("total").innerHTML = "You have consumed " + total + " calories";
 
-};
+       
+
+
+    return total
+
+}
+
+
+
+
+
   function calsPerDay() {
     function find(id) { return document.getElementById(id) }
 
@@ -50,6 +60,7 @@ function updateDisplay(array) {
     var height = find("height").value * 2.54
     var weight = find("weight").value / 2.2
     var result = 0
+  
     if (find("male").checked) 
       result = 66.47 + (13.75 * weight) + (5.0 * height - (6.75 * age))
     else if (find("female").checked)
@@ -57,18 +68,69 @@ function updateDisplay(array) {
     find("totalCals").innerHTML = Math.round( result )
 
     return result;
+
 }
-calsPerDay()
 
-function cals() {
-    function find(id) { return document.getElementById(id) }
 
-    var tatal = find("total").value
-    var totalCals = find("totalCals").value
-    var result = 0
-  
-      result = totalCals - tatal;
-    find("cals").innerHTML = Math.round( result )
 
-    return result;
+function cal(){
+
+
+var dailyNorm  ;
+var eaten ;
+var summary;
+var proficit;
+var additional;
+
+
+eaten = updateDisplay(foodList);
+dailyNorm = calsPerDay(); 
+additional = exerciseCal();
+
+
+summary = (dailyNorm  - eaten) + additional;
+proficit = (eaten - dailyNorm) + additional;
+
+
+document.getElementById("sumeaten").innerHTML = " You consumed " + Math.round(eaten) + " calories";
+document.getElementById("sumadditional").innerHTML = "You burnt additional " + Math.round(additional) + " calories";
+document.getElementById("sumdaily").innerHTML = " Your daily calories norm is " + Math.round(dailyNorm) + " calories";
+
+
+if ( eaten < dailyNorm)
+{
+document.getElementById("result").innerHTML = "You can eat " + Math.round(summary) + " calories more";
+}
+
+else if( eaten > dailyNorm)
+
+{
+
+  document.getElementById("result").innerHTML = "You ate " + Math.round(proficit) + " more calories than your daily norm is."
+ 
+
+}
+return summary;
+
+
+}
+
+
+
+
+function exerciseCal() {
+  function find(id) { return document.getElementById(id) }
+
+  var time = find("time").value
+
+  var r = 0
+
+  if (find("running").checked) 
+    r = 8 *time
+  else if (find("walking").checked)
+    r = 5 *time
+  find("exerciseCals").innerHTML = Math.round( r )
+
+  return r;
+
 }
